@@ -1,0 +1,15 @@
+/***********************************************************
+Priority Graphic for the Case, for High, Medium or Low.
+For high priority cases a red flag is displayed; for medium an orange is shown and for a low a green flag is shown.
+***********************************************************/
+IMAGE 
+( 
+ IF( ISPICKVAL(Priority,"Low"),
+   "/img/samples/flag_green.gif", 
+     IF( ISPICKVAL(Priority,"Medium"),
+       "/img/samples/flag_yellow.gif", 
+         "/img/samples/flag_red.gif" 
+     ) 
+ ),
+"", 15, 15 
+)

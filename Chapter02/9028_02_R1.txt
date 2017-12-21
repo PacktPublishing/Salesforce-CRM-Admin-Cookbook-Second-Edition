@@ -1,0 +1,12 @@
+/*********************************************************** 
+Warning Graphic for the Opportunity. 
+If the Close Date has been reached display a warning 
+***********************************************************/ 
+IMAGE( 
+  IF( 
+    AND( 
+      NOT(IsClosed), 
+      CloseDate < TODAY()), 
+    "/img/msg_icons/warning32.png", 
+    "/img/msg_icons/confirm32.png"), 
+  "", 15, 15)

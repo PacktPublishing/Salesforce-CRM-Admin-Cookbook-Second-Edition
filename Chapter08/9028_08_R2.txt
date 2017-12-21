@@ -1,0 +1,75 @@
+<aura:component controller="AccountSearchController"
+                implements="lightning:actionOverride, force:hasRecordId, force:hasSObjectName">
+    <!-- Attribute Declaration -->
+	<aura:attribute name="searchString" type="String" description="Holds the User Search String Value"/>
+	<aura:attribute name="createStatus" type="boolean" default="false" description="Holds the Status of Records Returned"/>
+	<aura:attribute name="searchResult" type="List" description="Holds the List of Accounts that is Returned"/>
+    <aura:attribute name="searchCounts" type="integer" default="0" description="Holds the Count of Records Returned"/>
+	<!-- Search Section -->
+	<lightning:layout class="slds-page-header slds-page-header--object-home">
+		<lightning:layoutItem >
+			<lightning:icon iconName="standard:account" alternativeText="Search Before Create"/>
+		</lightning:layoutItem>
+		<lightning:layoutItem padding="horizontal-small">
+            <div class="page-section page-header">
+            <h1 class="slds-text-heading--label">Account</h1>
+            <h2 class="slds-text-heading--medium">Search Before Create</h2>
+            </div>
+        </lightning:layoutItem>
+        <lightning:layoutItem padding="horizontal-medium">         
+			<div class="slds-m-around--large">
+          	<form class="slds-form--inline">
+				<div class="slds-form-element">
+                <label class="slds-form-element__label" for="search"></label>
+                	<div class="slds-form-element__control">
+                   	<ui:inputText aura:id="searchId" class="slds-input" value="{!v.searchString}" 
+                    	required="true" size="40" 
+                        placeholder="Search first before creating an account..."/>
+                	</div>
+             	</div>        
+                <lightning:button label="Search" onclick="{!c.onSearch}" />
+                <aura:if isTrue="{!v.createStatus}">
+                	<lightning:button class="slds-button--brand" label="Create" onclick="{!c.onCreate}" />
+                </aura:if>
+                <aura:if isTrue="{!v.createStatus}">
+                   <div class="slds-text-color--error">No account records found, click on Create to create an account...</div>
+                </aura:if>
+			</form>
+            </div>
+        </lightning:layoutItem>
+    </lightning:layout>
+    <!-- Account Search Results -->
+	<aura:if isTrue="{!v.searchCounts>0}">    
+	<div class="slds-m-around--large">
+		<span class="slds-assistive-text">Number of Accounts {!v.searchCounts}</span>
+		<span class="slds-badge">Number of Accounts: {!v.searchCounts}</span>
+		<table class="slds-table slds-table--bordered slds-table--striped slds-table--cell-buffer slds-table--fixed-layout">
+			<thead> <!-- SELECT Id, Name, Type, Industry, Description, Phone -->
+			<tr class="slds-text-heading--label">
+               <th scope="col"><div class="slds-truncate" title="Id"></div></th>
+               <th scope="col"><div class="slds-truncate" title="Account Name">Account Name</div></th>
+               <th scope="col"><div class="slds-truncate" title="Type">Type</div></th>
+               <th scope="col"><div class="slds-truncate" title="Industry">Industry</div></th>
+               <th scope="col"><div class="slds-truncate" title="Description">Description</div></th>
+               <th scope="col"><div class="slds-truncate" title="Phone">Phone</div></th>
+			</tr>
+			</thead>
+			<tbody>
+			<aura:iteration items="{!v.searchResult}" var="acc" indexVar="idx">
+				<tr>
+                    <!-- Allows the user to navigate to the account record -->
+					<td><div class="slds-truncate"  data-record="{!idx}"  
+                     onclick="{!c.onNavigate}"
+                     onmouseover="" style="cursor: pointer;">[Navigate to account]</div></td>
+                  <td><div class="slds-truncate">{!acc.Name}</div></td>
+                  <td><div class="slds-truncate">{!acc.Type}</div></td>
+                  <td><div class="slds-truncate">{!acc.Industry}</div></td>
+                  <td><div class="slds-truncate">{!acc.Description}</div></td>
+                  <td><div class="slds-truncate">{!acc.Phone}</div></td>
+               </tr>
+            </aura:iteration>
+			</tbody>
+		</table>
+	</div>
+	</aura:if>
+</aura:component>

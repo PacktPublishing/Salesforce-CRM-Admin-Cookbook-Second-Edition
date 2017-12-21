@@ -1,0 +1,11 @@
+public without sharing class AccountSearchController {
+	@AuraEnabled
+    public static List<Account> getAccounts(String psSearchText) {
+		String sSearchName = '%' + psSearchText + '%';
+    	List<Account> accounts = [
+        	SELECT Id, Name, Type, Industry, Description, Phone 
+        	FROM Account 
+        	WHERE Name LIKE :sSearchName ];
+		return accounts;    
+  	}  
+}

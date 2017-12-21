@@ -1,0 +1,18 @@
+<aura:component implements=""force:hasRecordId,flexipage:availableForRecordHome,force:hasSObjectName"">
+    <!-- Setup the record data for the Account -->
+    <aura:attribute name=""recordId"" type=""Id"" description=""This sets the Id of the Account record""/>
+	<aura:attribute name=""account"" type=""Object"" description=""This sets the Account object""/>    
+	<force:recordData recordId=""{!v.recordId}""
+	layoutType=""FULL""
+	targetFields=""{!v.account}""
+    mode=""VIEW""/>
+    <!-- Highlight a Prospect Account -->
+    <aura:if isTrue=""{!(v.account.Type == ''Prospect'')}"">
+        <div style=""border: 1px solid rgb(255, 51, 51); 
+                    color: black; 
+                    font-size: 18px;
+                    background-color: rgb(255, 255, 204);">
+            &nbsp;{!v.account.Name} is a {!v.account.Type} account!
+        </div>
+	</aura:if>
+</aura:component>

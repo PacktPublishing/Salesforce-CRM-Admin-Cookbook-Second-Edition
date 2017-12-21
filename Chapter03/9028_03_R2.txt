@@ -1,0 +1,10 @@
+/***********************************************************
+Week Number Formula
+- 2017,01,01 : Jan 1 2017 : Sunday (used as a reference point)
+- Calculate difference between reference point and Close Date (no. of days)
+- Divide this number of days range into weeks ( / 7 )
+- FLOOR function removes any decimal places to give whole no. of weeks
+- MOD function give modulus of 52 (a year) to return the remainder weeks
+- Finally the calculation is incremented by 1 to give starting week no. 
+***********************************************************/
+MOD(FLOOR( ( CloseDate - DATE(2017,01,01) ) / 7), 52 ) + 1

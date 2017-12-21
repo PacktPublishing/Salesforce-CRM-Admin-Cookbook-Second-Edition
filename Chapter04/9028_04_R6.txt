@@ -1,0 +1,5 @@
+VLOOKUP( 
+	$ObjectType.Country_Code__c.Fields.IsEmbargo__c, 
+	$ObjectType.Country_Code__c.Fields.Name, 
+	LEFT(BillingCountry,2) 
+)

@@ -1,0 +1,62 @@
+({
+    // Search for account record
+    onSearch: function(component, event, helper) {
+        var searchKeyFld = component.find("searchId");
+        var srcValue = searchKeyFld.get("v.value");
+        if (srcValue == '' || srcValue == null) {
+            // Display an error nothing entered
+            searchKeyFld.set("v.errors", [{
+                message: "Please enter an account name before searching..."
+            }]);
+        } else {
+            searchKeyFld.set("v.errors", null);
+            // Call the accountSearchBeforeCreateHelper method
+            helper.SearchHelper(component, event);
+        }
+    },
+
+    // Navigate to account record
+	onNavigate : function (component, event, helper) {
+    
+    // Retrieve the selected account record 
+    var selectedItem = event.currentTarget;
+	var index = selectedItem.dataset.record;
+	var accObject = component.get("v.searchResult")[index];
+	var navEvt = $A.get("e.force:navigateToSObject");
+                navEvt.setParams({
+                    "recordId": accObject.Id,
+                    "slideDevName": "detail"
+                });
+                navEvt.fire();
+    },
+    
+	onCreate : function (component, event, helper) {
+        // Recordtype selection handler
+        var sRecordTypeId = null; // default
+        var RCT_STR = 'recordTypeId';
+        var RCT_LEN = RCT_STR.length + 1;
+        var SID_LEN = 15;
+        var TOT_LEN = RCT_LEN + SID_LEN;
+        var url_string = window.location.href;
+        
+        // Main account creation
+		var createRecordEvent = $A.get("e.force:createRecord");
+        var sSearch = component.get("v.searchString");
+    
+        // Getting the record type if present null if not present
+        var isRct = url_string.includes(RCT_STR);              
+        if(isRct=== true){
+            sRecordTypeId = url_string.substring(
+                url_string.indexOf(RCT_STR) + RCT_LEN,
+                url_string.indexOf(RCT_STR) + TOT_LEN);
+        }        
+		createRecordEvent.setParams({
+            "entityApiName": "Account",
+            "recordTypeId" : sRecordTypeId,
+            "defaultFieldValues": {
+                "Name" 		: sSearch
+            }
+    	});
+    	createRecordEvent.fire();
+	}    
+})

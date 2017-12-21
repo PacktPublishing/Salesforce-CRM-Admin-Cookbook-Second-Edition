@@ -1,0 +1,17 @@
+/********************************************************  
+Begin the check for Annual Revenue value and set the following:
+Greater than (or equal to) 100,000 = One Dollar image 
+Greater than (or equal to) 500,000 = Two Dollar image 
+Greater than (or equal to) 1,000,000 = Three Dollar image
+Greater than (or equal to) 2,000,000 = Four Dollar image 
+Greater than (or equal to) 5,000,000 = Five Dollar image 
+*********************************************************/
+IF( AnnualRevenue > 99999, IMAGE("/resource/1505987107000/money_dollar", "$", 16, 16),"")
+&
+IF( AnnualRevenue > 499999, IMAGE("/resource/1505987107000/money_dollar", "$", 16, 16),"")
+&
+IF( AnnualRevenue > 999999, IMAGE("/resource/1505987107000/money_dollar", "$", 16, 16),"")
+&
+IF( AnnualRevenue > 1999999, IMAGE("/resource/1505987107000/money_dollar", "$", 16, 16),"")
+&
+IF( AnnualRevenue > 4999999, IMAGE("/resource/1505987107000/money_dollar", "$", 16, 16),"")

@@ -1,0 +1,14 @@
+/***********************************************************
+Google Chart type Google-O-meter
+ 
+***********************************************************/
+IF(
+  ISNUMBER( TEXT(Credit_Score__c) ), 
+    IMAGE( 
+      "https://chart.apis.google.com/chart?cht=gm" &
+      "&chxl=0:|0|50|100&chxt=y&chs=200x120&chls=2|10" & 
+      "&chd=t:" & TEXT((Credit_Score__c)) &
+      "&chl=" & TEXT(Credit_Score__c), "Credit Score Graphic"
+    ),
+"Not Specified"
+)

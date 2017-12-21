@@ -1,0 +1,32 @@
+@isTest
+private class AccountSearchControllerTest{
+
+    @isTest
+    static void test_getAccounts(){
+
+	// Create test data
+	List<Account> lstAccTestData = new List<Account>{};
+
+        // Create test data
+        for(Integer i = 5; i < 10; i++){
+            Account acc = new Account(Name = 'Test Account ' + i);
+            lstAccTestData .add(acc);
+        }
+
+	Test.startTest();
+	List<Account> lstAccResult = new List<Account>{};
+
+	// Test Account Does Not exist
+	String sNonExistingAccount = 'Non Existing Account';
+        lstAccResult = AccountSearchController.getAccounts(sNonExistingAccount);
+        System.assertEquals(null, lstAccResult);
+
+	// Test Account Does Exist
+	String sDoesExistAccount = 'Test Account';
+        lstAccResult = AccountSearchController.getAccounts(sDoesExistAccount);
+        System.assertNotEquals(null, lstAccResult);
+
+	Test.stopTest();
+
+    }
+}

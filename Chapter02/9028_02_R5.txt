@@ -1,0 +1,36 @@
+<apex:page standardController="Account">
+<style>
+  td.no_border{border:none}
+  td.green{background-color:#00FF00; border:none}
+  td.red{background-color:#FF0000; border:none}
+  td.grey{background-color:#DDDDDD; border:none}
+</style> 
+<script> 
+  window.addEventListener('DOMContentLoaded', function() {
+    var iLimit = {!Account.Credit_Score__c};
+    var sHTML ;
+    var iThreshold = 40;
+    sHTML = '<table>';
+    sHTML += '<tr>';
+    sHTML += '<td class="no_border">0%</td>';   
+    for(var i=0; i<100; i=i+5){
+      if( iLimit <= iThreshold ){
+        if( i<iLimit )
+          sHTML += '<td class="red" nowrap="nowrap">&nbsp;</td>';
+        else
+          sHTML += '<td class="grey" nowrap="nowrap">&nbsp;</td>';
+        }else{
+          if( i<iLimit )
+            sHTML += '<td class="green" nowrap="nowrap">&nbsp;</td>';
+          else
+            sHTML += '<td class="grey" nowrap="nowrap">&nbsp;</td>';
+        }
+      }
+    sHTML += '<td class="no_border">100%</td></tr></table>';
+    if( iLimit >= 0 ){
+      document.getElementById("CreditScore").innerHTML = sHTML + "Credit Score : " + iLimit + "%";
+    }
+  });
+</script>
+<div id="CreditScore">Credit Score is not within limits</div>
+</apex:page>

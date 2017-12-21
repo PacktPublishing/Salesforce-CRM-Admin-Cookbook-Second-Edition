@@ -1,0 +1,10 @@
+AND(
+  NOT( REGEX( BillingPostalCode, "\\d{5}(-\\d{4})?" ) ),
+  OR( 
+    UPPER( BillingCountry ) = "US", 
+    UPPER( BillingCountry ) = "USA",
+    UPPER( BillingCountry ) = "U.S.A.",
+    UPPER( BillingCountry ) = "U.S.",
+    UPPER( BillingCountry ) = "UNITED STATES"
+   ) 
+)

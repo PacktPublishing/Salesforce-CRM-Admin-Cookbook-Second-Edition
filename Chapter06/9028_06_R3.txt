@@ -1,0 +1,8 @@
+ISCHANGED([Opportunity].StageName )
+
+
+[Opportunity].Id
+
+PRIORVALUE([Opportunity].StageName)
+
+TEXT([Opportunity].StageName)

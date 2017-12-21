@@ -1,0 +1,4 @@
+AND( 
+  ISCHANGED( Name ), 
+  $Profile.Name <> "System Administrator"
+)

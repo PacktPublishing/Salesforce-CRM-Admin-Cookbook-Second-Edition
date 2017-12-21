@@ -1,0 +1,21 @@
+{!Today}
+
+
+
+Dear {!User.FirstName},
+
+
+
+The close date for the opportunity, {!Opportunity.Name} for the account {!Opportunity.Account.Name} is due within 21 days.
+
+
+
+Sincerely
+
+
+
+Salesforce System Administrator
+
+
+
+NOT(IsClosed)

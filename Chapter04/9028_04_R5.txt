@@ -1,0 +1,13 @@
+No Budget
+Missing Product Features
+Better Price
+Cost / Value
+
+
+AND(
+  NOT(IsWon),
+  IsClosed, 
+  ISBLANK(TEXT(Reason_Lost__c))
+)
+
+

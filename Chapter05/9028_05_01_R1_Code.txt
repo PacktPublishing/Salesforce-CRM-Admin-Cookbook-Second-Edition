@@ -1,0 +1,8 @@
+{!Today}
+
+
+
+
+The opportunity, {!Opportunity.Name} for the account {!Opportunity.Account.Name} has an amount > 100k.
+
+The opportunity is pending your review and approval as it is now at stage {!Opportunity.StageName}.

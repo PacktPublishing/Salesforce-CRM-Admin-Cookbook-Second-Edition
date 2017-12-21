@@ -1,0 +1,11 @@
+/* Create the link to the Account filtered report */
+HYPERLINK(
+/* Specify the report ID generated in the Getting Ready section */
+""#/sObject/[Your-Report-ID]/view?fv0=""
+/* Specify the Account record ID */
+&Id,
+/* Specify the text for the hyperlink */
+""Opportunity Report"",
+/* Specify that the report opens in the same browser tab */
+""_self"
+)

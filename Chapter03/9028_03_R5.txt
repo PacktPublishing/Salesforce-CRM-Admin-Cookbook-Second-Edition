@@ -1,0 +1,6 @@
+NOT(IsClosed)
+
+
+
+NOW() + 21
+

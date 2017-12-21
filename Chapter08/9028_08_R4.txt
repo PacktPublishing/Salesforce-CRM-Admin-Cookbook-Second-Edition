@@ -1,0 +1,24 @@
+({
+    SearchHelper: function(component, event) {
+        var action = component.get("c.getAccounts");
+        action.setParams({
+            'psSearchText': component.get("v.searchString")
+        });
+        action.setCallback(this, function(response) {
+            var state = response.getState();
+            if (state === "SUCCESS") {
+                var returnValue = response.getReturnValue();
+                // if nothing is returned allow user to create an account.
+                if (returnValue.length == 0) {
+                    component.set("v.createStatus", true);
+                } else {
+                    component.set("v.createStatus", false);
+                }
+                // Set the Component attributes
+                component.set("v.searchCounts", returnValue.length);
+                component.set("v.searchResult", returnValue);
+            }
+        });
+        $A.enqueueAction(action); 
+    },
+})
