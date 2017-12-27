@@ -11,12 +11,9 @@ All of the code is organized into folders. Each folder starts with a number foll
 
 The code will look like the following:
 ```
-<aura:component controller="AccountSearchController"
-implements="lightning:actionOverride, force:hasRecordId,
-force:hasSObjectName">
+<aura:component controller="AccountSearchController" implements="lightning:actionOverride, force:hasRecordId, force:hasSObjectName">
 <!-- Attribute Declaration -->
-<aura:attribute name="searchString" type="String"
-description="Holds the User Search String Value"/>
+<aura:attribute name="searchString" type="String" description="Holds the User Search String Value"/>
 ```
 
 The prerequisite for this book is a computer with an internet connection and one of the following supported browsers: Google Chrome™, Mozilla® Firefox®, Apple® Safari® version 8.x on Mac OS X, or Microsoft® Internet Explorer® version 11.
@@ -29,6 +26,3 @@ You will need either the Enterprise Edition, Unlimited Edition, or Developer Edi
 * [Learning Continuous Integration with Jenkins - Second Edition](https://www.packtpub.com/virtualization-and-cloud/learning-continuous-integration-jenkins-second-edition?utm_source=github&utm_medium=repository&utm_campaign=9781788479356)
 
 * [Learning Angular - Second Edition](https://www.packtpub.com/web-development/learning-angular-second-edition?utm_source=github&utm_medium=repository&utm_campaign=9781787124929)
-
-### Suggestions and Feedback
-[Click here](https://docs.google.com/forms/d/e/1FAIpQLSe5qwunkGf6PUvzPirPDtuy1Du5Rlzew23UBp2S-P3wB-GcwQ/viewform) if you have any feedback or suggestions.
