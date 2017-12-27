@@ -16,7 +16,7 @@ The code will look like the following:
 <aura:attribute name="searchString" type="String" description="Holds the User Search String Value"/>
 ```
 
-The prerequisite for this book is a computer with an internet connection and one of the following supported browsers: Google Chrome™, Mozilla® Firefox®, Apple® Safari® version 8.x on Mac OS X, or Microsoft® Internet Explorer® version 11.
+The prerequisite for this book is a computer with an internet connection and one of the following supported browsers: Google Chrome™, Mozilla® Firefox®, Apple® Safari® version 8.x on macOS X, or Microsoft® Internet Explorer® version 11.
 Please note, Microsoft® Internet Explorer® versions 7–10 are not supported in Lightning Experience and the platform redirects to Salesforce Classic when using these versions.
 You will need either the Enterprise Edition, Unlimited Edition, or Developer Edition of Salesforce CRM, along with system administrator permission.
 
